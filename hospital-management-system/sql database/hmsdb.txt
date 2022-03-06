@@ -1,0 +1,147 @@
+drop database hmsdb;
+create database hmsdb;
+use hmsdb;
+CREATE TABLE registration (
+  username VARCHAR(100) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  NameOfUser VARCHAR(250) NOT NULL,
+  ContactNo VARCHAR(15) NOT NULL,
+  Email VARCHAR(250) NOT NULL,
+  PRIMARY KEY (username)
+);
+INSERT INTO hmsdb.registration (username, password, `NameOfUser`, `ContactNo`, `Email`) VALUES ('admin', '12345', 'Prince Thind', '123456789', 'Princethind399@gmail.com');
+
+
+CREATE TABLE doctor (
+  DoctorID VARCHAR(10) NOT NULL,
+  DoctorName VARCHAR(100) NOT NULL,
+  FatherName VARCHAR(100) NOT NULL,
+  Address VARCHAR(200) NOT NULL,
+  ContactNo VARCHAR(12) NOT NULL,
+  Email VARCHAR(250) NOT NULL,
+  Qualifications VARCHAR(80) NOT NULL,
+  Specialization VARCHAR(50) NOT NULL,
+  Gender VARCHAR(10) NOT NULL,
+  Bloodgroup VARCHAR(5) NOT NULL,
+  DateOfJoining VARCHAR(20) NOT NULL,
+  PRIMARY KEY (DoctorID)
+);
+INSERT INTO hmsdb.doctor (`DoctorID`, `DoctorName`, `FatherName`, `Address`, `ContactNo`, `Email`, `Qualifications`, `Specialization`, `Gender`, `Bloodgroup`, `DateOfJoining`) VALUES ('1', 'Cris D.', 'James D.', 'Banglore', '123456789', 'James458@gmail.com', 'MD', 'Medicine', 'M', 'O+', '25/11/2018');
+INSERT INTO hmsdb.doctor (`DoctorID`, `DoctorName`, `FatherName`, `Address`, `ContactNo`, `Email`, `Qualifications`, `Specialization`, `Gender`, `Bloodgroup`, `DateOfJoining`) VALUES ('2', 'Mitika', 'Roshan', 'Pune', '123456789', 'Mitika125@gmail.com', 'MD', 'ENT', 'F', 'AB+', '25/11/2018');
+INSERT INTO hmsdb.doctor (`DoctorID`, `DoctorName`, `FatherName`, `Address`, `ContactNo`, `Email`, `Qualifications`, `Specialization`, `Gender`, `Bloodgroup`, `DateOfJoining`) VALUES ('3', 'Rachna', 'Vicky', 'Indore', '123456789', 'Rachna458@gmail.com', 'MD', 'Child Specialist', 'F', 'B+', '25/11/2018');
+
+CREATE TABLE patientregistration (
+  PatientID VARCHAR(10) NOT NULL,
+  Patientname VARCHAR(100) NOT NULL,
+  Fathername VARCHAR(100) NOT NULL,
+  Address VARCHAR(250) NOT NULL,
+  ContactNo VARCHAR(12) NOT NULL,
+  Email VARCHAR(150) NOT NULL,
+  Age INT(11) NOT NULL,
+  Gen VARCHAR(10) NOT NULL,
+  BG VARCHAR(5) NOT NULL,
+  Remarks VARCHAR(350) NOT NULL,
+  PRIMARY KEY (PatientID)
+);
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('1', 'Rahul ', 'Ajay', 'Pune', '123456789', 'Rahul586@gmail.com', 22, 'M', 'AB+', 'Mild Fever');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('2', 'Vikas', 'Rajeev', 'Shimla', '123456789', 'Vikas586@gmail.com', 21, 'M', 'B+', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('3', 'Janie', 'Chris T.', 'Banglore', '123456789', 'Janie456@gmail.com', 22, 'F', 'O+', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('4', 'Salman', 'Fateh Ali', 'Sri nagar', '123456789', 'Salman125@gmail.com', 17, 'M', 'O+', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('5', 'Priya', 'Ajay', 'Bhopal', '123456789', 'Priya256@gmail.com', 25, 'F', 'A-', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('6', 'Karan', 'Preetam', 'Delhi', '123456789', 'Karan789@gmail.com', 22, 'M', 'B-', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('7', 'Sanjay', 'Vipin', 'Chandigarh', '123456789', 'Sanjay725@gmail.com', 15, 'M', 'O+', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('8', 'Richa', 'Vikas', 'Pune', '123456789', 'Richa345@gmail.com', 19, 'F', 'B+', '');
+INSERT INTO hmsdb.patientregistration (`PatientID`, `Patientname`, `Fathername`, `Address`, `ContactNo`, `Email`, `Age`, `Gen`, `BG`, `Remarks`) VALUES ('9', 'Rosy', 'Arun', 'Banglore', '123456789', 'Rosy968@gmail.com', 16, 'F', 'A+', '');
+
+CREATE TABLE services (
+  ServiceID INT(11) NOT NULL AUTO_INCREMENT,
+  ServiceName VARCHAR(250) NOT NULL,
+  ServiceDate VARCHAR(15) NOT NULL,
+  PatientID VARCHAR(10) NOT NULL,
+  ServiceCharges INT(11) NOT NULL,
+  PRIMARY KEY (ServiceID)
+);
+INSERT INTO hmsdb.services (`ServiceName`, `ServiceDate`, `PatientID`, `ServiceCharges`) VALUES ('Xray', '18/06/2019', '4', 250);
+INSERT INTO hmsdb.services (`ServiceName`, `ServiceDate`, `PatientID`, `ServiceCharges`) VALUES ('MRI', '20/12/2018', '8', 2000);
+INSERT INTO hmsdb.services (`ServiceName`, `ServiceDate`, `PatientID`, `ServiceCharges`) VALUES ('Xray', '12/11/2018', '6', 250);
+
+CREATE TABLE ward (
+  wardname VARCHAR(100) NOT NULL,
+  wardtype VARCHAR(20) NOT NULL,
+  NoOfBeds INT(11) NOT NULL,
+  Charges INT(11) NOT NULL,
+  PRIMARY KEY (wardname)
+);
+INSERT INTO hmsdb.ward (wardname, wardtype, `NoOfBeds`, `Charges`) VALUES ('A', 'General', 4, 1200);
+INSERT INTO hmsdb.ward (wardname, wardtype, `NoOfBeds`, `Charges`) VALUES ('B', 'Special', 1, 2000);
+INSERT INTO hmsdb.ward (wardname, wardtype, `NoOfBeds`, `Charges`) VALUES ('C', 'General', 6, 1000);
+
+
+CREATE TABLE wardboy_nurse_tbl (
+  ID VARCHAR(10) NOT NULL,
+  W_N_Name VARCHAR(250) NOT NULL,
+  Category VARCHAR(250) NOT NULL,
+  Address VARCHAR(250) NOT NULL,
+  ContactNo VARCHAR(15) NOT NULL,
+  Email VARCHAR(250) NOT NULL,
+  Qualifications VARCHAR(250) NOT NULL,
+  BloodGroup VARCHAR(5) NOT NULL,
+  DateOfJoining VARCHAR(20) NOT NULL,
+  PRIMARY KEY (ID)
+);
+INSERT INTO hmsdb.wardboy_nurse_tbl (`ID`, `W_N_Name`, `Category`, `Address`, `ContactNo`, `Email`, `Qualifications`, `BloodGroup`, `DateOfJoining`) VALUES ('1', 'Ritika', 'Nurse', 'Pune', '123456789', 'Ritika568@gmail.com', 'B.Sc Nursing', 'B+', '20/11/2017');
+
+CREATE TABLE admitpatient_ward (
+  AdmitID INT(11) NOT NULL AUTO_INCREMENT,
+  PatientID VARCHAR(10) NOT NULL,
+  Disease VARCHAR(50) NOT NULL,
+  Wardname VARCHAR(100) NOT NULL,
+  AdmitDate VARCHAR(50) NOT NULL,
+  DoctorID VARCHAR(50) NOT NULL,
+  AP_Remarks VARCHAR(50) NOT NULL,
+  bill_status  varchar(20) not null default 'pending',
+  PRIMARY KEY (AdmitID)
+  );
+INSERT INTO hmsdb.admitpatient_ward (`PatientID`, `Disease`, `Wardname`, `AdmitDate`, `DoctorID`, `AP_Remarks`, bill_status) VALUES ('3', 'Dengue', 'B', '20/12/2018', '2', '', 'pending');
+INSERT INTO hmsdb.admitpatient_ward (`PatientID`, `Disease`, `Wardname`, `AdmitDate`, `DoctorID`, `AP_Remarks`, bill_status) VALUES ('4', 'Malaria', 'B', '20/11/0018', '3', '', 'pending');
+INSERT INTO hmsdb.admitpatient_ward (`PatientID`, `Disease`, `Wardname`, `AdmitDate`, `DoctorID`, `AP_Remarks`, bill_status) VALUES ('6', 'Typhoid', 'C', '20/11/2018', '2', '', 'paid');
+INSERT INTO hmsdb.admitpatient_ward (`PatientID`, `Disease`, `Wardname`, `AdmitDate`, `DoctorID`, `AP_Remarks`, bill_status) VALUES ('5', 'malaria', 'C', '20/11/2018', '3', '', 'pending');
+INSERT INTO hmsdb.admitpatient_ward (`PatientID`, `Disease`, `Wardname`, `AdmitDate`, `DoctorID`, `AP_Remarks`, bill_status) VALUES ('7', 'Dengue', 'A', '20/12/2018', '1', '', 'pending');
+
+CREATE TABLE users (
+  username VARCHAR(100) NOT NULL,
+  user_password VARCHAR(50) NOT NULL,
+  PRIMARY KEY (username)
+ );
+INSERT INTO hmsdb.users (username, user_password) VALUES ('admin', '12345');
+
+CREATE TABLE bill_ward (
+  BillNo INT(11) NOT NULL AUTO_INCREMENT,
+  DischargeID INT(11) NOT NULL,
+  BillingDate VARCHAR(50) NOT NULL,
+  BedCharges DOUBLE NOT NULL,
+  NoOfDays INT(11) NOT NULL,
+  
+  
+  TotalCharges DOUBLE NOT NULL,
+  PaymentMode VARCHAR(50) NOT NULL,
+  ChargesPaid DOUBLE NOT NULL,
+  PRIMARY KEY (BillNo)
+
+);
+INSERT INTO hmsdb.bill_ward (`DischargeID`, `BillingDate`, `BedCharges`, `NoOfDays`, `TotalCharges`, `PaymentMode`, `ChargesPaid`) VALUES (3, '20/06/2019', 2000.0, 15, 30000.0, 'by Cash', 30000.0);
+INSERT INTO hmsdb.bill_ward (`DischargeID`, `BillingDate`, `BedCharges`, `NoOfDays`, `TotalCharges`, `PaymentMode`, `ChargesPaid`) VALUES (4, '20/12/2018', 1000.0, 10, 10000.0, 'by Cash', 10000.0);
+INSERT INTO hmsdb.bill_ward (`DischargeID`, `BillingDate`, `BedCharges`, `NoOfDays`, `TotalCharges`, `PaymentMode`, `ChargesPaid`) VALUES (5, '21/12/2018', 1200.0, 10, 12000.0, 'by Cash', 12000.0);
+
+CREATE TABLE dischargepatient_ward (
+  ID INT(11) NOT NULL AUTO_INCREMENT,
+  AdmitID INT(11) NOT NULL,
+  DischargeDate VARCHAR(50) NOT NULL,
+  DP_Remarks VARCHAR(50) NOT NULL,
+  PRIMARY KEY (ID)
+  
+);
+INSERT INTO hmsdb.dischargepatient_ward (`AdmitID`, `DischargeDate`, `DP_Remarks`) VALUES (3, '25/12/2018', '');
+INSERT INTO hmsdb.dischargepatient_ward (`AdmitID`, `DischargeDate`, `DP_Remarks`) VALUES (5, '22/12/2018', '');
+
+
